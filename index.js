@@ -39,15 +39,27 @@ function keyPress(k) {
   }
 }
 
+function animation(key){
+  var activeButton=document.querySelector("."+key);
+  console.log(activeButton);
+  activeButton.classList.add("pressed");
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  },100);
+
+}
+
 
 var n = document.querySelectorAll(".drum").length;
 for (var i = 0; i < n; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var k = this.innerHTML;
     keyPress(k);
+    animation(k);
   });
 }
 
 document.addEventListener("keydown",function(event){
   keyPress(event.key);
+  animation(event.key);
 });
